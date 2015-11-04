@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('adamantSniffleApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
-
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
-
+  .controller('MainCtrl', function($scope) {
+    $scope.links = {
+      'style': 'Style',
+      'sizeChart': 'Size Chart',
+      'category': 'Categories',
+      'Collection': 'Collections',
+      'brand': 'Brands',
+      'look': 'Look',
+      'filteredList': 'Filtered List'
+    };
   });

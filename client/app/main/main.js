@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('adamantSniffleApp')
-  .config(function ($stateProvider) {
+  .config(function($stateProvider) {
     $stateProvider
-      .state('main', {
-        url: '/',
+      .state('pcm.main', {
+        url: '/home',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });
