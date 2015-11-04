@@ -1,3 +1,30 @@
-<div class="col-md-12">
-This is the style view.
+<div class="style-container flex-row flex-flex">
+  <div class="side-nav unselectable">
+    <div ng-repeat="(key, value) in sideMenu['style']" class="l1">
+      <div class="flex-row" ng-click="toggleMenu(value)">
+        <span>{{value.name}}</span>
+        <span class="flex-flex"></span>
+        <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
+      </div>
+      <div ng-hide="value.leafNode || !value.open">
+        <div ng-repeat="(key, value) in value.subMenu" class="l2">
+          <div class="flex-row" ng-click="toggleMenu(value)">
+            <span>{{value.name}}</span>
+            <span class="flex-flex"></span>
+            <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
+          </div>
+          <div ng-hide="value.leafNode || !value.open">
+            <div ng-repeat="(key, value) in value.subMenu" class="l3">
+              <div class="flex-row" ng-click="toggleMenu(value)">
+                <span>{{value.name}}</span>
+                <span class="flex-flex"></span>
+                <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content" class="flex-flex"></div>
 </div>
