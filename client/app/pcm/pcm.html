@@ -1,12 +1,13 @@
-<div class="flex-column pcm-container">
-  <div class="header flex-row">
-    <a ui-sref="pcm.main" class="flex-row">
-      <div class="logo flex-column">
+<div class="pcm-container" layout="column">
+  <div class="header" layout>
+    <a ui-sref="pcm.main" layout>
+      <div class="logo no-outline" ng-click="obj.changeSection(null)" layout layout-align="start center">
         <span>pcm</span>
       </div>
     </a>
+    <div ng-show="obj.section !== null" class="section" layout layout-align="start center"><span>{{obj.section}}</span></div>
   </div>
-  <div class="flex-flex content-container flex-column">
-    <div ui-view="" class="flex-flex flex-column"></div>
+  <div layout="column" flex>
+    <div class="content-container" ui-view="" flex layout="column"></div>
   </div>
 </div>

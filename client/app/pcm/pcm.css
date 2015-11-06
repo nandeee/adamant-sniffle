@@ -7,26 +7,25 @@ body {
 
 /* Normalize */
 
+.pcm-container {
+  height: 100vh;
+}
+
 .header {
-  height: 50px;
+  /*height: 60px;*/
+  min-height: 60px;
   background-color: #424242;
   font-family: 'Lato', sans-serif;
-  border-bottom: 5px solid #3b3b3b;
+  border-bottom: 5px solid #5C6BC0;
+  color: #FFFFFF;
 }
 
 .logo {
-  background-color: #3F51B5;
+  background-color: #1A237E;
   padding: 0 10px;
   text-transform: uppercase;
   font-size: 20px;
   font-weight: bold;
-  color: #FFFFFF;
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
 }
 
 .header a {
@@ -36,8 +35,77 @@ body {
 
 .content-container {
   background-color: #FAFAFA;
+  overflow-y: auto;
 }
 
-.pcm-container {
-  height: 100vh;
+.section   {
+  background-color: #3F51B5;
+  font-size: 16px;
+  padding: 0 20px;
+}
+
+.input-checkbox {
+  margin: 5px 10px;
+  width: 150px;
+}
+
+.input-textarea {
+  margin: 5px 10px;
+  width: 300px;
+  border: 1px solid #a4a4a4;
+}
+
+.input {
+  margin: 5px 10px;
+  width: 150px;
+  border: 1px solid #a4a4a4;
+}
+
+.input-array {
+  margin: 5px 10px;
+  padding: 2px;
+  max-width: 400px;
+  border: 1px solid #a4a4a4;
+  background-color: #FFFFFF;
+}
+
+md-input-container {
+  background-color: #FFFFFF;
+  padding: 0;
+}
+
+md-input-container .md-input {
+  padding: 0 5px;
+  font-size: 14px;
+}
+
+.md-text.ng-binding {
+  font-size: 14px;
+}
+
+md-select-value {
+  font-size: 14px;
+}
+
+md-select-value span {
+  padding: 0 5px;
+}
+
+.md-chip-content {
+  font-size: 14px;
+}
+
+.input-label {
+  font-weight: bold;
+  font-size: 14px;
+  width: 160px;
+  text-align: right;
+}
+
+.input-wrapper {
+  margin: 10px 0;
+}
+
+.no-outline {
+  outline: none;
 }

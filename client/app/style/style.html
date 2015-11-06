@@ -1,23 +1,23 @@
-<div class="style-container flex-row flex-flex">
+<div class="style-container" layout flex>
   <div class="side-nav unselectable">
     <div ng-repeat="(key, value) in sideMenu['style']" class="l1">
-      <div class="flex-row" ng-click="toggleMenu(value)">
+      <div layout ng-click="toggleMenu(value)">
         <span>{{value.name}}</span>
-        <span class="flex-flex"></span>
+        <span flex></span>
         <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
       </div>
       <div ng-hide="value.leafNode || !value.open">
         <div ng-repeat="(key, value) in value.subMenu" class="l2">
-          <div class="flex-row" ng-click="toggleMenu(value)">
+          <div layout ng-click="toggleMenu(value)">
             <span>{{value.name}}</span>
-            <span class="flex-flex"></span>
+            <span flex></span>
             <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
           </div>
           <div ng-hide="value.leafNode || !value.open">
             <div ng-repeat="(key, value) in value.subMenu" class="l3">
-              <div class="flex-row" ng-click="toggleMenu(value)">
+              <div layout ng-click="toggleMenu(value)">
                 <span>{{value.name}}</span>
-                <span class="flex-flex"></span>
+                <span flex></span>
                 <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
               </div>
             </div>
@@ -26,5 +26,30 @@
       </div>
     </div>
   </div>
-  <div class="content" class="flex-flex"></div>
+  <div class="content" flex>
+    <div layout class="search-box-container">
+      <md-autocomplete class="search-box" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText, styleList)" md-item-text="item" md-min-length="0" placeholder="Enter Style ID">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Style IDs matching "{{ctrl.searchText}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+      <div layout layout-align="center center">
+        <button>Search</button>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="input-container-title">Global Attributes</div>
+      <div>
+        <div ng-repeat="(key, value) in fields.basicInformation">
+          <div ng-include="'app/templates/input.html'" scope="" onload=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="input-container-title">Specific Attributes</div>
+    </div>
+  </div>
 </div>

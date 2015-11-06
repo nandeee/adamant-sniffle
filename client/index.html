@@ -16,6 +16,7 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(client) app/vendor.css -->
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -23,9 +24,15 @@
   <link rel="stylesheet" href="app/app.css">
   <!-- injector:css -->
   <link rel="stylesheet" href="app/app.css">
+  <link rel="stylesheet" href="app/brand/brand.css">
+  <link rel="stylesheet" href="app/category/category.css">
+  <link rel="stylesheet" href="app/collection/collection.css">
+  <link rel="stylesheet" href="app/filteredList/filteredList.css">
   <link rel="stylesheet" href="app/flexbox.css">
+  <link rel="stylesheet" href="app/look/look.css">
   <link rel="stylesheet" href="app/main/main.css">
   <link rel="stylesheet" href="app/pcm/pcm.css">
+  <link rel="stylesheet" href="app/sizeChart/sizeChart.css">
   <link rel="stylesheet" href="app/style/style.css">
   <!-- endinjector -->
   <!-- endbuild -->
@@ -49,15 +56,30 @@
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="bower_components/lodash/dist/lodash.compat.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:js({.tmp,client}) app/app.js -->
   <script src="app/app.js"></script>
   <!-- injector:js -->
+  <script src="app/brand/brand.controller.js"></script>
+  <script src="app/brand/brand.js"></script>
+  <script src="app/category/category.controller.js"></script>
+  <script src="app/category/category.js"></script>
+  <script src="app/collection/collection.controller.js"></script>
+  <script src="app/collection/collection.js"></script>
+  <script src="app/filteredList/filteredList.controller.js"></script>
+  <script src="app/filteredList/filteredList.js"></script>
+  <script src="app/look/look.controller.js"></script>
+  <script src="app/look/look.js"></script>
   <script src="app/main/main.controller.js"></script>
   <script src="app/main/main.js"></script>
   <script src="app/pcm/pcm.controller.js"></script>
   <script src="app/pcm/pcm.js"></script>
+  <script src="app/sizeChart/sizeChart.controller.js"></script>
+  <script src="app/sizeChart/sizeChart.js"></script>
   <script src="app/style/style.controller.js"></script>
   <script src="app/style/style.js"></script>
   <script src="components/navbar/navbar.controller.js"></script>

@@ -2,7 +2,8 @@
  *App Level Styles
  */
 
-body,
+body {}
+
 .main-container {
   height: 100vh;
 }

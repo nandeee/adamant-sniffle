@@ -6,7 +6,7 @@ angular.module('adamantSniffleApp')
       'style': 'Style',
       'sizeChart': 'Size Chart',
       'category': 'Categories',
-      'Collection': 'Collections',
+      'collection': 'Collections',
       'brand': 'Brands',
       'look': 'Look',
       'filteredList': 'Filtered List'
