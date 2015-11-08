@@ -3,7 +3,7 @@
 angular.module('adamantSniffleApp')
   .controller('StyleCtrl', function($scope) {
     $scope.obj.section = 'style';
-    $scope.obj.subSection = 'firstOne';
+    $scope.obj.subSection = 'styleState';
     $scope.fields = {
       'firstLevel': {
         'id': {
@@ -208,6 +208,53 @@ angular.module('adamantSniffleApp')
       }
     };
 
+    $scope.myData = [{
+      "firstName": "Cox",
+      "lastName": "Carney",
+      "company": "Enormo",
+      "employed": true
+    }, {
+      "firstName": "Lorraine",
+      "lastName": "Wise",
+      "company": "Comveyer",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }, {
+      "firstName": "Nancy",
+      "lastName": "Waters",
+      "company": "Fuelton",
+      "employed": false
+    }];
+
     $scope.styleList = ['NTS536360TB', 'NTS536373UW', 'NTS536370TB', 'NTS536371TB', 'NTS536372TB', 'NTS536373TB', 'NTS536374TB'];
 
     $scope.toggleMenu = function(value) {
@@ -227,5 +274,9 @@ angular.module('adamantSniffleApp')
         };
         return angular.lowercase(item).indexOf(lowercaseQuery) !== -1;
       };
+    };
+
+    $scope.handleFileUpload = function(e) {
+      console.log(e);
     };
   });

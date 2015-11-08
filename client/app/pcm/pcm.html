@@ -12,7 +12,7 @@
       <md-whiteframe class="md-whiteframe-2dp page-bg" layout layout-align="center center">
         <md-input-container class="select">
           <md-select ng-model="model" placeholder="Change Section" ng-change="changeSubSection(model)">
-            <md-option ng-repeat="(key, value) in subSections[obj.section]" value="{{key}}">
+            <md-option md-no-ink ng-repeat="(key, value) in subSections[obj.section]" value="{{key}}">
               {{value}}
             </md-option>
           </md-select>

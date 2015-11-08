@@ -26,8 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="content" flex>
-    <pre>{{obj | json}}</pre>
+  <div class="content" flex layout="column">
     <div ng-show="obj.subSection === 'content'">
       <div layout class="search-box-container">
         <md-autocomplete class="search-box" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText, styleList)" md-item-text="item" md-min-length="0" placeholder="Enter Style ID">
@@ -39,7 +38,7 @@
           </md-not-found>
         </md-autocomplete>
         <div layout layout-align="center center">
-          <button>Search</button>
+          <button class="custom-button">Search</button>
         </div>
       </div>
       <div class="input-container">
@@ -55,15 +54,62 @@
       </div>
     </div>
     <div ng-show="obj.subSection === 'firstOne'">
-      hello
+      firstOne
     </div>
-    <div ng-show="obj.subSection === 'image'">
-      <div>something</div>
-      <uib-tabset>
-        <uib-tab heading="Static title">Static content</uib-tab>
-        <uib-tab heading="Static title">Static content</uib-tab>
-        <uib-tab heading="Static title">Static content</uib-tab>
-      </uib-tabset>
+    <div ng-show="obj.subSection === 'imageUpload'" flex layout>
+      <md-tabs flex>
+        <md-tab label="Bulk">
+          <div class="input-container">
+            <div class="input-container-title">Bulk Image Upload</div>
+            <div layout>
+              <div class="folder-path"></div>
+              <label class="browse unselectable">
+                Browse
+                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
+              </label>
+              <button class="custom-button">Upload</button>
+            </div>
+          </div>
+          <div class="input-container">
+            <div class="input-container-title">Bulk Video Upload</div>
+            <div layout>
+              <div class="folder-path"></div>
+              <label class="browse unselectable">
+                Browse
+                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
+              </label>
+              <button class="custom-button">Upload</button>
+            </div>
+          </div>
+        </md-tab>
+        <md-tab label="Single">
+          <div class="input-container">
+            <div class="input-container-title">Image Upload</div>
+            <div layout>
+              <div class="folder-path"></div>
+              <label class="browse unselectable">
+                Browse
+                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
+              </label>
+              <button class="custom-button">Upload</button>
+            </div>
+          </div>
+          <div class="input-container">
+            <div class="input-container-title">Video Upload</div>
+            <div layout>
+              <div class="folder-path"></div>
+              <label class="browse unselectable">
+                Browse
+                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
+              </label>
+              <button class="custom-button">Upload</button>
+            </div>
+          </div>
+        </md-tab>
+      </md-tabs>
+    </div>
+    <div ng-show="obj.subSection === 'styleState'" flex layout>
+      <div id="grid1" ui-grid="{ data: myData }" class="grid"></div>
     </div>
   </div>
 </div>

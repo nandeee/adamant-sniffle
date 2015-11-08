@@ -86,10 +86,6 @@ body {
   font-size: 14px;
 }
 
-.input-container .md-text.ng-binding {
-  font-size: 14px;
-}
-
 .input-container md-select-value {
   font-size: 14px;
 }
@@ -104,7 +100,7 @@ body {
 
 .input-label {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   width: 160px;
   text-align: right;
 }
@@ -137,13 +133,35 @@ body {
   padding: 0 10px;
 }
 
-.header md-select-value {
+.header md-select-value span {
   font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  padding: 0 5px;
+  color: #000000;
+}
+
+md-option .md-text {
+  font-size: 16px;
   font-family: 'Lato', sans-serif;
 }
 
-.header md-select-value span {
-  font-size: 14px;
-  padding: 0 5px;
+md-tabs-canvas {
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+md-tab-item span {
   color: #000000;
+}
+
+md-tab-item.md-active span {
+  color: #3F51B5;
+}
+
+md-tab-item {
+  font-family: 'Lato', sans-serif;
+}
+
+[role="tabpanel"] {
+  transition: none;
 }

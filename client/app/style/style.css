@@ -74,7 +74,11 @@ img {
   padding: 20px 10px;
 }
 
-button {
+.test::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+button.custom-button {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -95,5 +99,55 @@ button {
   font-size: 18px;
   font-family: 'Lato', sans-serif;
   padding-bottom: 10px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #E0E0E0;
+}
+
+.browse input {
+  left: -9999px;
+  position: absolute;
+}
+
+.browse {
+  cursor: pointer;
+  background-color: #424242;
+  color: white;
+  border-top: 2px solid #DDDDDD;
+  border-left: 2px solid #DDDDDD;
+  border-bottom: 2px solid #898989;
+  border-right: 2px solid #898989;
+  padding: 5px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+}
+
+.browse:active {
+  border-top: 2px solid #898989;
+  border-left: 2px solid #898989;
+  border-bottom: 2px solid #DDDDDD;
+  border-right: 2px solid #DDDDDD;
+}
+
+.temp-container {
+  padding: 20px;
+}
+
+.folder-path {
+  border: 1px solid #a4a4a4;
+  width: 300px;
+  background-color: #FFFFFF;
+  margin: 0 10px;
+}
+
+
+/*
+.ui-grid,
+.ui-grid-viewport {
+  height: auto !important;
+}
+*/
+
+.grid {
+  width: 500px;
+  height: 250px;
 }
