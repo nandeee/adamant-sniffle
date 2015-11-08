@@ -1,12 +1,50 @@
 'use strict';
 
 angular.module('adamantSniffleApp')
-  .controller('PcmCtrl', function($scope) {
+  .controller('PcmCtrl', function($scope, $http) {
     $scope.obj = {
-      'section': 'Style',
+      'section': null,
+      'subSection': null,
+      'subSections': null,
       'changeSection': function(section) {
         $scope.obj.section = section;
+        switch (section) {
+          case 'style':
+            $scope.obj.subSection = 'firstOne';
+            console.log('firstOne');
+            break;
+          case null:
+            $scope.obj.subSection = null;
+            break;
+        };
       }
     };
-    $scope.message = 'Hello';
+
+    $scope.changeSubSection = function(subSection) {
+      $scope.obj.subSection = subSection;
+    };
+
+    $scope.sections = {
+      'style': 'Style',
+      'sizeChart': 'Size Chart',
+      'category': 'Categories',
+      'collection': 'Collections',
+      'brand': 'Brands',
+      'look': 'Look',
+      'filteredList': 'Filtered List'
+    };
+
+    $scope.subSections = {
+      'style': {
+        'firstOne': 'First One',
+        'content': 'Content',
+        'imageUpload': 'Image Upload'
+      }
+    };
+
+    $scope.makeRequest = function() {
+      $http.get('http://localhost:3000/posts/1').then(function(response) {
+        console.log(response);
+      });
+    };
   });

@@ -2,6 +2,8 @@
 
 angular.module('adamantSniffleApp')
   .controller('StyleCtrl', function($scope) {
+    $scope.obj.section = 'style';
+    $scope.obj.subSection = 'firstOne';
     $scope.fields = {
       'firstLevel': {
         'id': {
@@ -42,7 +44,7 @@ angular.module('adamantSniffleApp')
           'model': [],
           'section': null,
           'inputType': 'array',
-          'options': ['one', 'two', 'three', 'five', 'six', 'seven', 'eigth']
+          'options': ['one', 'two', 'three', 'five', 'six', 'seven', 'eight']
         },
         'baseProduct': {
           'label': 'Base Product',

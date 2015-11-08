@@ -1,7 +1,7 @@
 <div class="home-container">
   <div class="links" layout>
     <a ui-sref="pcm.{{key}}" ng-repeat="(key, value) in links">
-      <div class="link" ng-click="obj.changeSection(value)">
+      <div class="link" ng-click="obj.changeSection(key)">
         {{value}}
       </div>
     </a>

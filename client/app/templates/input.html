@@ -5,8 +5,8 @@
   <div ng-switch-when="array">
     <div class="input-array">
       <md-chips ng-model="value.model" md-autocomplete-snap md-require-match="false">
-        <md-autocomplete type="{{value.type}}" md-min-length="0" md-search-text="searchText" md-items="item in querySearch(searchText, value.options)" md-item-text="item" placeholder="{{value.label}}">
-          <span md-highlight-text="searchText">{{item}}</span>
+        <md-autocomplete type="{{value.type}}" md-min-length="0" md-search-text="styleSearchText" md-items="item in querySearch(styleSearchText, value.options)" md-item-text="item" placeholder="{{value.label}}">
+          <span md-highlight-text="styleSearchText">{{item}}</span>
         </md-autocomplete>
         <md-chip-template>
           <span class="chip">

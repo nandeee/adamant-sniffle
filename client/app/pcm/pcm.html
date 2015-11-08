@@ -5,9 +5,25 @@
         <span>pcm</span>
       </div>
     </a>
-    <div ng-show="obj.section !== null" class="section" layout layout-align="start center"><span>{{obj.section}}</span></div>
+    <div ng-show="obj.section !== null" class="section" layout layout-align="start center"><span>{{sections[obj.section]}}</span></div>
+    <div ng-show="obj.subSection !== null" class="sub-section" layout layout-align="start center"><span>{{subSections[obj.section][obj.subSection]}}</span></div>
+    <div flex></div>
+    <div layout layout-align="center center" class="change-section">
+      <md-whiteframe class="md-whiteframe-2dp page-bg" layout layout-align="center center">
+        <md-input-container class="select">
+          <md-select ng-model="model" placeholder="Change Section" ng-change="changeSubSection(model)">
+            <md-option ng-repeat="(key, value) in subSections[obj.section]" value="{{key}}">
+              {{value}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </md-whiteframe>
+    </div>
   </div>
   <div layout="column" flex>
+    <div layout layout-align="start center" ng-if="false">
+      <button ng-click="makeRequest()">Test</button>
+    </div>
     <div class="content-container" ui-view="" flex layout="column"></div>
   </div>
 </div>

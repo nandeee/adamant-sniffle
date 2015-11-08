@@ -5,7 +5,8 @@ angular.module('adamantSniffleApp', [
     'ngResource',
     'ngSanitize',
     'ui.router',
-    'ngMaterial'
+    'ngMaterial',
+    'ui.bootstrap'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

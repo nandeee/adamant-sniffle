@@ -14,6 +14,7 @@ body {
 .header {
   /*height: 60px;*/
   min-height: 60px;
+  max-height: 60px;
   background-color: #424242;
   font-family: 'Lato', sans-serif;
   border-bottom: 5px solid #5C6BC0;
@@ -38,7 +39,13 @@ body {
   overflow-y: auto;
 }
 
-.section   {
+.sub-section {
+  background-color: #7986CB;
+  font-size: 16px;
+  padding: 0 20px;
+}
+
+.section {
   background-color: #3F51B5;
   font-size: 16px;
   padding: 0 20px;
@@ -69,29 +76,29 @@ body {
   background-color: #FFFFFF;
 }
 
-md-input-container {
+.input-container md-input-container {
   background-color: #FFFFFF;
   padding: 0;
 }
 
-md-input-container .md-input {
+.input-container md-input-container .md-input {
   padding: 0 5px;
   font-size: 14px;
 }
 
-.md-text.ng-binding {
+.input-container .md-text.ng-binding {
   font-size: 14px;
 }
 
-md-select-value {
+.input-container md-select-value {
   font-size: 14px;
 }
 
-md-select-value span {
+.input-container md-select-value span {
   padding: 0 5px;
 }
 
-.md-chip-content {
+.input-container .md-chip-content {
   font-size: 14px;
 }
 
@@ -108,4 +115,35 @@ md-select-value span {
 
 .no-outline {
   outline: none;
+}
+
+.page-bg {
+  background-color: #FAFAFA;
+}
+
+.white-bg {
+  background-color: #FFFFFF;
+}
+
+.header md-input-container {
+  padding: 0;
+}
+
+.header .select {
+  width: 150px;
+}
+
+.change-section {
+  padding: 0 10px;
+}
+
+.header md-select-value {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+}
+
+.header md-select-value span {
+  font-size: 14px;
+  padding: 0 5px;
+  color: #000000;
 }
