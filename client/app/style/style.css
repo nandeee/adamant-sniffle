@@ -140,8 +140,7 @@ button.custom-button {
 }
 
 
-/*
-.ui-grid,
+/*.ui-grid,
 .ui-grid-viewport {
   height: auto !important;
 }
@@ -149,5 +148,22 @@ button.custom-button {
 
 .grid {
   width: 500px;
-  height: 250px;
+  height: 500px;
+}
+
+.grid * {
+  outline: none;
+}
+
+.grid button {
+  font-size: 15px;
+}
+
+.grid-container {
+  /*  max-height: 300px;
+  overflow-y: auto;*/
+}
+
+.grid-checkbox {
+  height: 30px;
 }

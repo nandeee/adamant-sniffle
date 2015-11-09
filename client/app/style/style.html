@@ -1,3 +1,4 @@
+<!-- <pre>{{tempScopeObj | json}}</pre> -->
 <div class="style-container" layout flex>
   <div class="side-nav unselectable">
     <div ng-repeat="(key, value) in sideMenu['style']" class="l1">
@@ -108,8 +109,25 @@
         </md-tab>
       </md-tabs>
     </div>
-    <div ng-show="obj.subSection === 'styleState'" flex layout>
-      <div id="grid1" ui-grid="{ data: myData }" class="grid"></div>
+    <div ng-show="obj.subSection === 'styleState'" flex layout="column">
+      <md-tabs flex>
+        <md-tab label="Activate Styles">
+          <div class="big-padding grid-container" layout>
+            <div ui-grid="gridOptions" class="grid" flex></div>
+          </div>
+          <div class="small-padding">
+            <button class="custom-button">Activate Styles</button>
+          </div>
+        </md-tab>
+        <md-tab label="Deactivate Styles">
+          <div class="big-padding grid-container" layout>
+            <div ui-grid="gridOptions" class="grid" flex></div>
+          </div>
+          <div class="small-padding">
+            <button class="custom-button">Deactivate Styles</button>
+          </div>
+        </md-tab>
+      </md-tabs>
     </div>
   </div>
 </div>

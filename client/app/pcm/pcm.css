@@ -152,10 +152,12 @@ md-tabs-canvas {
 
 md-tab-item span {
   color: #000000;
+  font-weight: bold;
 }
 
 md-tab-item.md-active span {
   color: #3F51B5;
+  font-weight: bold;
 }
 
 md-tab-item {
@@ -164,4 +166,16 @@ md-tab-item {
 
 [role="tabpanel"] {
   transition: none;
+}
+
+.small-padding {
+  padding: 10px;
+}
+
+.medium-padding {
+  padding: 20px 10px;
+}
+
+.big-padding {
+  padding: 20px;
 }

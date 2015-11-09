@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adamantSniffleApp')
-  .controller('StyleCtrl', function($scope) {
+  .controller('StyleCtrl', function($scope, StyleService) {
     $scope.obj.section = 'style';
     $scope.obj.subSection = 'styleState';
     $scope.fields = {
@@ -208,52 +208,7 @@ angular.module('adamantSniffleApp')
       }
     };
 
-    $scope.myData = [{
-      "firstName": "Cox",
-      "lastName": "Carney",
-      "company": "Enormo",
-      "employed": true
-    }, {
-      "firstName": "Lorraine",
-      "lastName": "Wise",
-      "company": "Comveyer",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }, {
-      "firstName": "Nancy",
-      "lastName": "Waters",
-      "company": "Fuelton",
-      "employed": false
-    }];
+    var myData = [];
 
     $scope.styleList = ['NTS536360TB', 'NTS536373UW', 'NTS536370TB', 'NTS536371TB', 'NTS536372TB', 'NTS536373TB', 'NTS536374TB'];
 
@@ -279,4 +234,94 @@ angular.module('adamantSniffleApp')
     $scope.handleFileUpload = function(e) {
       console.log(e);
     };
+
+    var baseGridItem = {
+      'select': null,
+      'status': null,
+      'styleId': null,
+      'baseProduct': null,
+      'brand': null,
+      'ageGroup': null,
+      'baseColor': null
+    };
+
+    $scope.gridOptions = {
+      data: myData,
+      enableFiltering: true,
+      columnDefs: [{
+        visible: false,
+        name: 'field1',
+        displayName: 'pretty display name'
+      }, {
+        visible: false,
+        name: 'field2',
+        displayName: 'somethingelse'
+      }, {
+        visible: false,
+        name: 'firstName',
+        displayName: 'something',
+        width: 200
+      }, {
+        name: 'select',
+        enableSorting: false,
+        enableFiltering: false,
+        width: 80,
+        cellTemplate: '<div class="grid-checkbox" layout layout-align="center center"><md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="row.entity[col.field]" class="md-primary"></md-checkbox></div>'
+      }, {
+        name: 'status'
+      }, {
+        name: 'styleId'
+      }, {
+        name: 'baseProduct'
+      }, {
+        name: 'brand'
+      }, {
+        name: 'ageGroup'
+      }, {
+        name: 'baseColor'
+      }]
+    };
+
+    var gridItemObj = {
+      'status': null,
+      'basicInformation': {
+        'styleId': null,
+        'baseProduct': null,
+        'brand': null,
+        'ageGroup': null,
+        'baseColor': null
+      }
+    };
+
+    $scope.tempScopeObj = [];
+
+    function iterateGridItem(obj, responseObj, tempGridItem) {
+      for (var prop in obj) {
+        if (obj[prop] !== null) {
+          iterateGridItem(obj[prop], responseObj[prop], tempGridItem);
+        } else {
+          if (Array.isArray(responseObj[prop])) {
+            tempGridItem[prop] = responseObj[prop].join(', ');
+          } else {
+            tempGridItem[prop] = responseObj[prop];
+          };
+        };
+      }
+    }
+
+    function generateGridItemList(response) {
+      for (var i = 0; i < response.length; i++) {
+        var tempGridItem = angular.copy(baseGridItem);
+        iterateGridItem(gridItemObj, response[i], tempGridItem);
+        myData.push(tempGridItem);
+        $scope.tempScopeObj.push(tempGridItem);
+      };
+    }
+
+    StyleService.get().then(function(response) {
+      generateGridItemList(response);
+      for (var i = 0; i < response.length; i++) {
+        console.log(response[i]);
+      };
+    });
   });
