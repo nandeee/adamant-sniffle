@@ -10,7 +10,7 @@ angular.module('adamantSniffleApp')
         $scope.obj.section = section;
         switch (section) {
           case 'style':
-            $scope.obj.subSection = 'styleState';
+            $scope.obj.subSection = 'qc';
             break;
           case null:
             $scope.obj.subSection = null;
@@ -37,8 +37,9 @@ angular.module('adamantSniffleApp')
       'style': {
         'firstOne': 'First One',
         'content': 'Content',
-        'imageUpload': 'Image Upload',
-        'styleState': '(De) Activate Style'
+        'image': 'Image',
+        'styleState': '(De) Activate Style',
+        'qc': 'QC'
       }
     };
 

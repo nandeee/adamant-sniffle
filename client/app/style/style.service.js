@@ -8,6 +8,12 @@ angular.module('adamantSniffleApp')
         return $http.get(url).then(function(response) {
           return response.data.data;
         });
+      },
+      getById: function(id) {
+        var url = 'http://localhost:3000/styleById';
+        return $http.get(url).then(function(response) {
+          return response.data.data;
+        });
       }
     };
   });

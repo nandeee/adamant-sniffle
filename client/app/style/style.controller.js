@@ -3,7 +3,7 @@
 angular.module('adamantSniffleApp')
   .controller('StyleCtrl', function($scope, StyleService) {
     $scope.obj.section = 'style';
-    $scope.obj.subSection = 'styleState';
+    $scope.obj.subSection = 'qc';
     $scope.fields = {
       'firstLevel': {
         'id': {
@@ -118,6 +118,28 @@ angular.module('adamantSniffleApp')
         },
       }
     };
+    $scope.qcFields = {};
+    $scope.qcFieldsSpecificAttributes = {};
+
+    $scope.labelMapping = {
+      'styleId': 'Style ID',
+      'level1Category': 'level1Category',
+      'level2Category': 'level2Category',
+      'level3Category': 'level3Category',
+      'baseColor': 'Base Color',
+      'baseProduct': 'Base Product',
+      'colors': 'Colors',
+      'vendorArticleNumber': 'Vendor Article Number',
+      'vendorArticleName': 'Vendor Article Name',
+      'ageGroup': 'Age Group',
+      'fashionType': 'Fashion Type',
+      'year': 'Year',
+      'sizes': 'Sizes',
+      'brand': 'Brand',
+      'occasion': 'Occasion',
+      'sleeve': 'Sleeve',
+      'neck': 'Neck'
+    }
 
     $scope.sideMenu = {
       'style': {
@@ -135,7 +157,9 @@ angular.module('adamantSniffleApp')
                   'name': 'T-Shirts',
                   'open': false,
                   'leafNode': true,
-                  'subMenu': null
+                  'subMenu': null,
+                  'selected': false,
+                  'path': 'something.test.asdf'
                 }
               }
             }
@@ -208,9 +232,42 @@ angular.module('adamantSniffleApp')
       }
     };
 
+    $scope.changeStyleSelection = function(value) {
+      console.log(value);
+      if (!value.selected) {
+        value.selected = true;
+      };
+    }
+
     var myData = [];
 
     $scope.styleList = ['NTS536360TB', 'NTS536373UW', 'NTS536370TB', 'NTS536371TB', 'NTS536372TB', 'NTS536373TB', 'NTS536374TB'];
+
+    $scope.getById = function getById() {
+      StyleService.getById().then(function(response) {
+        for (var prop in response.basicInformation) {
+          if (prop === 'specificAttributes') {
+            for (var field in response.basicInformation.specificAttributes) {
+              if (Array.isArray(response.basicInformation.specificAttributes[field])) {
+                console.log('<< Array >>');
+                $scope.qcFieldsSpecificAttributes[field] = response.basicInformation.specificAttributes[field].join(', ');
+              } else {
+                $scope.qcFieldsSpecificAttributes[field] = response.basicInformation.specificAttributes[field];
+              };
+            }
+            continue;
+          };
+          console.log('--> ' + prop);
+          if (Array.isArray(response.basicInformation[prop])) {
+            console.log('<< Array >>');
+            $scope.qcFields[prop] = response.basicInformation[prop].join(', ');
+          } else {
+            $scope.qcFields[prop] = response.basicInformation[prop];
+          };
+          console.log(response.basicInformation[prop]);
+        }
+      });
+    };
 
     $scope.toggleMenu = function(value) {
       value.open = !value.open;

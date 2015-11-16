@@ -1,25 +1,34 @@
 <!-- <pre>{{tempScopeObj | json}}</pre> -->
 <div class="style-container" layout flex>
   <div class="side-nav unselectable">
-    <div ng-repeat="(key, value) in sideMenu['style']" class="l1">
-      <div layout ng-click="toggleMenu(value)">
+    <div ng-repeat="(key, value) in sideMenu['style']" class="l1" ng-class="{'menu-selected': value.selected}">
+      <div layout ng-click="toggleMenu(value)" ng-hide="value.leafNode">
         <span>{{value.name}}</span>
         <span flex></span>
         <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
       </div>
+      <div layout ng-click="changeStyleSelection(value)" ng-show="value.leafNode">
+        <span>{{value.name}}</span>
+      </div>
       <div ng-hide="value.leafNode || !value.open">
-        <div ng-repeat="(key, value) in value.subMenu" class="l2">
-          <div layout ng-click="toggleMenu(value)">
+        <div ng-repeat="(key, value) in value.subMenu" class="l2" ng-class="{'menu-selected': value.selected}">
+          <div layout ng-click="toggleMenu(value)" ng-hide="value.leafNode">
             <span>{{value.name}}</span>
             <span flex></span>
             <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
           </div>
+          <div layout ng-click="changeStyleSelection(value)" ng-show="value.leafNode">
+            <span>{{value.name}}</span>
+          </div>
           <div ng-hide="value.leafNode || !value.open">
-            <div ng-repeat="(key, value) in value.subMenu" class="l3">
-              <div layout ng-click="toggleMenu(value)">
+            <div ng-repeat="(key, value) in value.subMenu" class="l3" ng-class="{'menu-selected': value.selected}">
+              <div layout ng-click="toggleMenu(value)" ng-hide="value.leafNode">
                 <span>{{value.name}}</span>
                 <span flex></span>
                 <img ng-class="{'menu-open': value.open}" ng-hide="value.leafNode" src="/assets/images/right-arrow-32px.png">
+              </div>
+              <div layout ng-click="changeStyleSelection(value)" ng-show="value.leafNode">
+                <span>{{value.name}}</span>
               </div>
             </div>
           </div>
@@ -28,62 +37,46 @@
     </div>
   </div>
   <div class="content" flex layout="column">
-    <div ng-show="obj.subSection === 'content'">
-      <div layout class="search-box-container">
-        <md-autocomplete class="search-box" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText, styleList)" md-item-text="item" md-min-length="0" placeholder="Enter Style ID">
-          <md-item-template>
-            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
-          </md-item-template>
-          <md-not-found>
-            No Style IDs matching "{{ctrl.searchText}}" were found.
-          </md-not-found>
-        </md-autocomplete>
-        <div layout layout-align="center center">
-          <button class="custom-button">Search</button>
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="input-container-title">Global Attributes</div>
-        <div>
-          <div ng-repeat="(key, value) in fields.basicInformation">
-            <div ng-include="'app/templates/input.html'" scope="" onload=""></div>
+    <div ng-show="obj.subSection === 'content'" flex layout>
+      <md-tabs flex>
+        <md-tab label="Single Upload">
+          <div layout class="search-box-container">
+            <md-autocomplete class="search-box" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText, styleList)" md-item-text="item" md-min-length="0" placeholder="Enter Style ID">
+              <md-item-template>
+                <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
+              </md-item-template>
+              <md-not-found>
+                No Style IDs matching "{{ctrl.searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+            <div layout layout-align="center center">
+              <button class="custom-button">Search</button>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="input-container-title">Specific Attributes</div>
-      </div>
+          <div class="input-container">
+            <div class="input-container-title">Global Attributes</div>
+            <div>
+              <div ng-repeat="(key, value) in fields.basicInformation">
+                <div ng-include="'app/templates/input.html'" scope="" onload=""></div>
+              </div>
+            </div>
+          </div>
+          <div class="input-container">
+            <div class="input-container-title">Specific Attributes</div>
+          </div>
+        </md-tab>
+        <md-tab label="Bulk Upload">
+        </md-tab>
+        <md-tab label="Download Styles">
+        </md-tab>
+      </md-tabs>
     </div>
     <div ng-show="obj.subSection === 'firstOne'">
       firstOne
     </div>
-    <div ng-show="obj.subSection === 'imageUpload'" flex layout>
+    <div ng-show="obj.subSection === 'image'" flex layout>
       <md-tabs flex>
-        <md-tab label="Bulk">
-          <div class="input-container">
-            <div class="input-container-title">Bulk Image Upload</div>
-            <div layout>
-              <div class="folder-path"></div>
-              <label class="browse unselectable">
-                Browse
-                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
-              </label>
-              <button class="custom-button">Upload</button>
-            </div>
-          </div>
-          <div class="input-container">
-            <div class="input-container-title">Bulk Video Upload</div>
-            <div layout>
-              <div class="folder-path"></div>
-              <label class="browse unselectable">
-                Browse
-                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
-              </label>
-              <button class="custom-button">Upload</button>
-            </div>
-          </div>
-        </md-tab>
-        <md-tab label="Single">
+        <md-tab label="Single Upload">
           <div class="input-container">
             <div class="input-container-title">Image Upload</div>
             <div layout>
@@ -97,6 +90,30 @@
           </div>
           <div class="input-container">
             <div class="input-container-title">Video Upload</div>
+            <div layout>
+              <div class="folder-path"></div>
+              <label class="browse unselectable">
+                Browse
+                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
+              </label>
+              <button class="custom-button">Upload</button>
+            </div>
+          </div>
+        </md-tab>
+        <md-tab label="Bulk Upload">
+          <div class="input-container">
+            <div class="input-container-title">Bulk Image Upload</div>
+            <div layout>
+              <div class="folder-path"></div>
+              <label class="browse unselectable">
+                Browse
+                <input class="test" type="file" custom-on-change="handleFileUpload" webkitdirectory mozdirectory />
+              </label>
+              <button class="custom-button">Upload</button>
+            </div>
+          </div>
+          <div class="input-container">
+            <div class="input-container-title">Bulk Video Upload</div>
             <div layout>
               <div class="folder-path"></div>
               <label class="browse unselectable">
@@ -128,6 +145,53 @@
           </div>
         </md-tab>
       </md-tabs>
+    </div>
+    <div ng-show="obj.subSection === 'qc'" flex layout="column">
+      <div layout class="search-box-container">
+        <md-autocomplete class="search-box" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText, styleList)" md-item-text="item" md-min-length="0" placeholder="Enter Style ID">
+          <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
+          </md-item-template>
+          <md-not-found>
+            No Style IDs matching "{{ctrl.searchText}}" were found.
+          </md-not-found>
+        </md-autocomplete>
+        <div layout layout-align="center center">
+          <button class="custom-button" ng-click="getById()">Search</button>
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="input-container-title">Global Attributes</div>
+        <div ng-repeat="(key, value) in qcFields track by $index" class="qc-field" layout ng-class="{'even': $index % 2 === 0}">
+          <div class="qc-label">{{labelMapping[key]}}</div>
+          <div layout layout-align="start center">
+            <span>{{value}}</span>
+          </div>
+        </div>
+        <div class="input-container-title top-margin">Specific Attributes</div>
+        <div ng-repeat="(key, value) in qcFieldsSpecificAttributes track by $index" class="qc-field" layout ng-class="{'even': $index % 2 === 0}">
+          <div class="qc-label">{{labelMapping[key]}}</div>
+          <div layout layout-align="start center">
+            <span>{{value}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="medium-padding">
+        <div class="input-container-title">Size Chart</div>
+      </div>
+      <div class="medium-padding">
+        <div class="input-container-title">PDP Preview</div>
+      </div>
+      <div class="separator"></div>
+      <div layout>
+        <div layout layout-align="center center">
+          <button class="custom-button">Approve</button>
+        </div>
+        <div layout layout-align="center center">
+          <button class="custom-button">Reject</button>
+        </div>
+      </div>
+      <div class="bottom-padding"></div>
     </div>
   </div>
 </div>

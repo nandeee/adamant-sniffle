@@ -24,7 +24,10 @@ img {
 
 .l1 > div:nth-child(1),
 .l2 > div:nth-child(1),
-.l3 > div:nth-child(1) {
+.l3 > div:nth-child(1),
+.l1 > div:nth-child(2),
+.l2 > div:nth-child(2),
+.l3 > div:nth-child(2) {
   padding: 5px 0;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -39,7 +42,10 @@ img {
 
 .l1 > div:nth-child(1):hover,
 .l2 > div:nth-child(1):hover,
-.l3 > div:nth-child(1):hover {
+.l3 > div:nth-child(1):hover,
+.l1 > div:nth-child(2):hover,
+.l2 > div:nth-child(2):hover,
+.l3 > div:nth-child(2):hover {
   color: #FFFFFF;
   cursor: pointer;
 }
@@ -166,4 +172,13 @@ button.custom-button {
 
 .grid-checkbox {
   height: 30px;
+}
+
+.menu-selected {
+  background-color: #BDBDBD;
+  color: #424242;
+}
+
+.menu-selected > div:nth-child(2):hover {
+  color: #424242;
 }

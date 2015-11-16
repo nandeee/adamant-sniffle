@@ -98,6 +98,23 @@ body {
   font-size: 14px;
 }
 
+.qc-field {
+  /*margin: 10px 0;*/
+  font-size: 16px;
+}
+
+.qc-label {
+  font-weight: bold;
+  font-size: 16px;
+  width: 180px;
+  text-align: right;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  margin-right: 10px;
+  border-right: 2px solid #c9c9c9;
+}
+
 .input-label {
   font-weight: bold;
   font-size: 15px;
@@ -146,8 +163,7 @@ md-option .md-text {
 }
 
 md-tabs-canvas {
-  background-color: #FFFFFF;
-  border-bottom: 2px solid #E0E0E0;
+  background-color: #EEEEEE;
 }
 
 md-tab-item span {
@@ -178,4 +194,24 @@ md-tab-item {
 
 .big-padding {
   padding: 20px;
+}
+
+.odd {}
+
+.even {
+  background-color: #E0E0E0;
+}
+
+.top-margin {
+  padding-top: 20px;
+}
+
+.separator {
+  height: 5px;
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 10px;
+}
+
+.bottom-padding {
+  height: 40px;
 }
